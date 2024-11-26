@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import * as fs from 'fs';
+import * as path from 'path';
 import { Country } from './entities/country.entity';
 
 @Injectable()
 export class CountryService {
-  private readonly filePath = 'dist/data/countries.json';
+  private readonly filePath = path.join(__dirname, '../data/countries.json');
 
   private readFile(): Country[] {
     const data = fs.readFileSync(this.filePath, 'utf8');
